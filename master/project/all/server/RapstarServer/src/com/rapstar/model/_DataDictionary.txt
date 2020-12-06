@@ -1,0 +1,191 @@
+Table: acccollect
+--------+---------+------+-----+---------+---------
+ Field  | Type    | Null | Key | Default | Remarks 
+--------+---------+------+-----+---------+---------
+ id     | INT(10) | NO   | PRI |         |         
+ userid | INT(10) | NO   |     |         |         
+ accid  | INT(10) | NO   |     |         |         
+--------+---------+------+-----+---------+---------
+
+Table: acclist
+----------+--------------+------+-----+---------+---------
+ Field    | Type         | Null | Key | Default | Remarks 
+----------+--------------+------+-----+---------+---------
+ id       | INT(10)      | NO   | PRI |         |         
+ name     | VARCHAR(50)  | NO   |     |         |         
+ authorid | INT(10)      | YES  |     |         |         
+ priority | INT(10)      | NO   |     | 1       | 0自己可见 1所有
+ profile  | VARCHAR(200) | YES  |     | 还木有简介~  |         
+ imgpath  | VARCHAR(20)  | YES  |     |         | 会有一个默认的图片
+----------+--------------+------+-----+---------+---------
+
+Table: accompaniment
+----------+--------------+------+-----+---------+---------
+ Field    | Type         | Null | Key | Default | Remarks 
+----------+--------------+------+-----+---------+---------
+ id       | INT(10)      | NO   | PRI |         |         
+ name     | VARCHAR(50)  | NO   |     |         |         
+ authorid | INT(10)      | NO   |     |         |         
+ intro    | VARCHAR(100) | YES  |     | 还木有介绍~  |         
+ time     | DATETIME(19) | NO   |     |         | 自动生成时间  
+ imgpath  | VARCHAR(20)  | YES  |     |         | 会有一个默认的图片
+ style    | INT(10)      | NO   |     |         |         
+ money    | DOUBLE(22)   | NO   |     | 0       | 0的时候表示免费
+ path     | VARCHAR(20)  | NO   |     |         |         
+----------+--------------+------+-----+---------+---------
+
+Table: alistdetail
+--------+---------+------+-----+---------+---------
+ Field  | Type    | Null | Key | Default | Remarks 
+--------+---------+------+-----+---------+---------
+ id     | INT(10) | NO   | PRI |         |         
+ listid | INT(10) | NO   |     |         |         
+ accid  | INT(10) | NO   |     |         |         
+--------+---------+------+-----+---------+---------
+
+Table: demo
+-----------+--------------+------+-----+---------+---------
+ Field     | Type         | Null | Key | Default | Remarks 
+-----------+--------------+------+-----+---------+---------
+ id        | INT(10)      | NO   | PRI |         |         
+ name      | VARCHAR(50)  | NO   |     |         |         
+ authorid  | INT(10)      | NO   |     |         |         
+ accid     | INT(10)      | NO   |     |         |         
+ lyricpath | VARCHAR(20)  | YES  |     |         | txt+id.txt
+ time      | DATETIME(19) | NO   |     |         |         
+ path      | VARCHAR(20)  | NO   |     |         | demo+id.mp3/wav
+ imgpath   | VARCHAR(20)  | YES  |     |         | demoimg+id.png/jpg
+ priority  | INT(10)      | NO   |     | 1       | 0表示自己，1表示所有
+ statu     | INT(10)      | NO   |     | 0       | 0已完成 1已上传
+-----------+--------------+------+-----+---------+---------
+
+Table: democollect
+--------+---------+------+-----+---------+---------
+ Field  | Type    | Null | Key | Default | Remarks 
+--------+---------+------+-----+---------+---------
+ id     | INT(10) | NO   | PRI |         |         
+ userid | INT(10) | NO   |     |         |         
+ demoid | INT(10) | NO   |     |         |         
+--------+---------+------+-----+---------+---------
+
+Table: demolist
+----------+-------------+------+-----+---------+---------
+ Field    | Type        | Null | Key | Default | Remarks 
+----------+-------------+------+-----+---------+---------
+ id       | INT(10)     | NO   | PRI |         |         
+ name     | VARCHAR(50) | NO   |     |         |         
+ authorid | INT(10)     | YES  |     |         |         
+ priority | INT(10)     | NO   |     | 1       | 0表示自己 1表示所有
+ imgpath  | VARCHAR(20) | YES  |     |         | 会有一个默认的图片
+----------+-------------+------+-----+---------+---------
+
+Table: dlistdetail
+--------+---------+------+-----+---------+---------
+ Field  | Type    | Null | Key | Default | Remarks 
+--------+---------+------+-----+---------+---------
+ id     | INT(10) | NO   | PRI |         |         
+ listid | INT(10) | NO   |     |         |         
+ demoid | INT(10) | NO   |     |         |         
+--------+---------+------+-----+---------+---------
+
+Table: following
+----------+---------+------+-----+---------+---------
+ Field    | Type    | Null | Key | Default | Remarks 
+----------+---------+------+-----+---------+---------
+ id       | INT(10) | NO   | PRI |         |         
+ star     | INT(10) | NO   |     |         |         
+ follower | INT(10) | NO   |     |         |         
+----------+---------+------+-----+---------+---------
+
+Table: musician
+-----------+--------------+------+-----+---------+---------
+ Field     | Type         | Null | Key | Default | Remarks 
+-----------+--------------+------+-----+---------+---------
+ id        | INT(10)      | NO   | PRI |         |         
+ name      | VARCHAR(50)  | NO   |     | 还木有写昵称~ |         
+ shortpro  | VARCHAR(100) | NO   |     | 还木有短介绍~ |         
+ longpro   | VARCHAR(400) | NO   |     | 还木有长介绍~ |         
+ sex       | CHAR(2)      | NO   |     | 男       |         
+ userid    | INT(10)      | YES  |     |         |         
+ photopath | VARCHAR(20)  | YES  |     |         | 会有一个默认的头像
+-----------+--------------+------+-----+---------+---------
+
+Table: slistcollect
+------------+---------+------+-----+---------+---------
+ Field      | Type    | Null | Key | Default | Remarks 
+------------+---------+------+-----+---------+---------
+ id         | INT(10) | NO   | PRI |         |         
+ userid     | INT(10) | NO   |     |         |         
+ songlistid | INT(10) | NO   |     |         |         
+------------+---------+------+-----+---------+---------
+
+Table: slistdetail
+--------+---------+------+-----+---------+---------
+ Field  | Type    | Null | Key | Default | Remarks 
+--------+---------+------+-----+---------+---------
+ id     | INT(10) | NO   | PRI |         |         
+ listid | INT(10) | NO   |     |         |         
+ songid | INT(10) | NO   |     |         |         
+--------+---------+------+-----+---------+---------
+
+Table: song
+-----------+-------------+------+-----+---------+---------
+ Field     | Type        | Null | Key | Default | Remarks 
+-----------+-------------+------+-----+---------+---------
+ id        | INT(10)     | NO   | PRI |         |         
+ name      | VARCHAR(50) | NO   |     |         |         
+ authorid  | INT(10)     | NO   |     |         |         
+ lyricpath | VARCHAR(20) | YES  |     |         | lrc+id.lrc
+ acc       | INT(10)     | YES  |     |         |         
+ style     | INT(10)     | YES  |     |         |         
+ path      | VARCHAR(20) | NO   |     |         | song+id.mp3/wav
+ money     | DOUBLE(22)  | NO   |     | 0       | 0表示免费   
+ imgpath   | VARCHAR(20) | YES  |     |         | songimg+id.png/jpg会有一个默认的
+-----------+-------------+------+-----+---------+---------
+
+Table: songcollect
+--------+---------+------+-----+---------+---------
+ Field  | Type    | Null | Key | Default | Remarks 
+--------+---------+------+-----+---------+---------
+ id     | INT(10) | NO   | PRI |         |         
+ userid | INT(10) | NO   |     |         |         
+ songid | INT(10) | NO   |     |         |         
+--------+---------+------+-----+---------+---------
+
+Table: songlist
+----------+--------------+------+-----+---------+---------
+ Field    | Type         | Null | Key | Default | Remarks 
+----------+--------------+------+-----+---------+---------
+ id       | INT(10)      | NO   | PRI |         |         
+ name     | VARCHAR(50)  | NO   |     |         |         
+ authorid | INT(10)      | NO   |     |         |         
+ priority | INT(10)      | NO   |     | 1       | 0表示自己 1表示所有
+ profile  | VARCHAR(200) | YES  |     | 还木有简介~  |         
+ imgpath  | VARCHAR(20)  | YES  |     |         | 会有一个默认的 
+----------+--------------+------+-----+---------+---------
+
+Table: style
+-------+-------------+------+-----+---------+---------
+ Field | Type        | Null | Key | Default | Remarks 
+-------+-------------+------+-----+---------+---------
+ id    | INT(10)     | NO   | PRI |         |         
+ name  | VARCHAR(50) | NO   |     |         |         
+-------+-------------+------+-----+---------+---------
+
+Table: user
+---------------+--------------+------+-----+---------+---------
+ Field         | Type         | Null | Key | Default | Remarks 
+---------------+--------------+------+-----+---------+---------
+ id            | INT(10)      | NO   | PRI |         |         
+ phone         | CHAR(11)     | NO   |     |         |         
+ name          | VARCHAR(50)  | YES  |     | 还没有填昵称~ | 昵称      
+ pwd           | VARCHAR(20)  | NO   |     |         | 是否加密？？  
+ photopath     | VARCHAR(20)  | YES  |     |         | 会有一个默认头像
+ sex           | CHAR(2)      | NO   |     | 男       | 默认为男    
+ intro         | VARCHAR(100) | YES  |     | 还木有简介哦~ |         
+ stars         | INT(10)      | NO   |     | 0       |         
+ followers     | INT(10)      | NO   |     | 0       |         
+ isvip         | CHAR(2)      | NO   |     | 0       | 只有0和1两个值
+ certification | CHAR(2)      | NO   |     | 0       | 0是普通用户，1是音乐人认证(发了歌/伴奏的都是音乐人，demo的不算)
+---------------+--------------+------+-----+---------+---------
+
