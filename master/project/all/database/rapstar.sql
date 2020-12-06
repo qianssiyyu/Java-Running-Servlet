@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50506
 File Encoding         : 65001
 
-Date: 2020-12-06 17:47:53
+Date: 2020-12-06 18:32:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,7 +44,7 @@ CREATE TABLE `acclist` (
   `authorid` int(11) DEFAULT NULL,
   `priority` int(11) NOT NULL DEFAULT '1' COMMENT '0自己可见 1所有',
   `profile` varchar(200) DEFAULT '还木有简介~',
-  `coverpath` varchar(20) DEFAULT NULL COMMENT '会有一个默认的图片',
+  `imgpath` varchar(20) DEFAULT NULL COMMENT '会有一个默认的图片',
   PRIMARY KEY (`id`),
   KEY `authorid` (`authorid`),
   CONSTRAINT `acclist_ibfk_1` FOREIGN KEY (`authorid`) REFERENCES `musician` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -61,17 +61,18 @@ DROP TABLE IF EXISTS `accompaniment`;
 CREATE TABLE `accompaniment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `authorid` int(11) DEFAULT NULL,
+  `authorid` int(11) NOT NULL,
   `intro` varchar(100) DEFAULT '还木有介绍~',
   `time` datetime NOT NULL COMMENT '自动生成时间',
   `imgpath` varchar(20) DEFAULT NULL COMMENT '会有一个默认的图片',
-  `style` int(11) DEFAULT NULL,
+  `style` int(11) NOT NULL,
   `money` double NOT NULL DEFAULT '0' COMMENT '0的时候表示免费',
+  `path` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `authorid` (`authorid`),
   KEY `style` (`style`),
   CONSTRAINT `accompaniment_ibfk_1` FOREIGN KEY (`authorid`) REFERENCES `musician` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `accompaniment_ibfk_2` FOREIGN KEY (`style`) REFERENCES `style` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+  CONSTRAINT `accompaniment_ibfk_2` FOREIGN KEY (`style`) REFERENCES `style` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
@@ -104,19 +105,19 @@ DROP TABLE IF EXISTS `demo`;
 CREATE TABLE `demo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `authorid` int(11) DEFAULT NULL,
-  `accid` int(11) DEFAULT NULL,
+  `authorid` int(11) NOT NULL,
+  `accid` int(11) NOT NULL,
   `lyricpath` varchar(20) DEFAULT NULL COMMENT 'txt+id.txt',
   `time` datetime NOT NULL,
   `path` varchar(20) NOT NULL COMMENT 'demo+id.mp3/wav',
-  `coverpath` varchar(20) DEFAULT NULL COMMENT 'demoimg+id.png/jpg',
+  `imgpath` varchar(20) DEFAULT NULL COMMENT 'demoimg+id.png/jpg',
   `priority` int(11) NOT NULL DEFAULT '1' COMMENT '0表示自己，1表示所有',
   `statu` int(11) NOT NULL DEFAULT '0' COMMENT '0已完成 1已上传',
   PRIMARY KEY (`id`),
   KEY `authorid` (`authorid`),
   KEY `accid` (`accid`),
   CONSTRAINT `demo_ibfk_1` FOREIGN KEY (`authorid`) REFERENCES `musician` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `demo_ibfk_2` FOREIGN KEY (`accid`) REFERENCES `accompaniment` (`id`) ON DELETE CASCADE ON UPDATE SET NULL
+  CONSTRAINT `demo_ibfk_2` FOREIGN KEY (`accid`) REFERENCES `accompaniment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
@@ -151,7 +152,7 @@ CREATE TABLE `demolist` (
   `name` varchar(50) NOT NULL,
   `authorid` int(11) DEFAULT NULL,
   `priority` int(11) NOT NULL DEFAULT '1' COMMENT '0表示自己 1表示所有',
-  `coverpath` varchar(20) DEFAULT NULL COMMENT '会有一个默认的图片',
+  `imgpath` varchar(20) DEFAULT NULL COMMENT '会有一个默认的图片',
   PRIMARY KEY (`id`),
   KEY `authorid` (`authorid`),
   CONSTRAINT `demolist_ibfk_1` FOREIGN KEY (`authorid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -221,6 +222,25 @@ CREATE TABLE `musician` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `slistcollect`
+-- ----------------------------
+DROP TABLE IF EXISTS `slistcollect`;
+CREATE TABLE `slistcollect` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) NOT NULL,
+  `songlistid` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `userid` (`userid`),
+  KEY `songlistid` (`songlistid`),
+  CONSTRAINT `slistcollect_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `slistcollect_ibfk_2` FOREIGN KEY (`songlistid`) REFERENCES `songlist` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of slistcollect
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `slistdetail`
 -- ----------------------------
 DROP TABLE IF EXISTS `slistdetail`;
@@ -246,13 +266,13 @@ DROP TABLE IF EXISTS `song`;
 CREATE TABLE `song` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `authorid` int(11) DEFAULT NULL COMMENT '当为null的时候显示为不知名艺术家',
+  `authorid` int(11) NOT NULL,
   `lyricpath` varchar(20) DEFAULT NULL COMMENT 'lrc+id.lrc',
   `acc` int(11) DEFAULT NULL,
   `style` int(11) DEFAULT NULL,
   `path` varchar(20) NOT NULL COMMENT 'song+id.mp3/wav',
   `money` double NOT NULL DEFAULT '0' COMMENT '0表示免费',
-  `img` varchar(20) DEFAULT NULL COMMENT 'songimg+id.png/jpg会有一个默认的',
+  `imgpath` varchar(20) DEFAULT NULL COMMENT 'songimg+id.png/jpg会有一个默认的',
   PRIMARY KEY (`id`),
   KEY `authorid` (`authorid`),
   KEY `style` (`style`),
@@ -293,7 +313,7 @@ CREATE TABLE `songlist` (
   `authorid` int(11) NOT NULL,
   `priority` int(11) NOT NULL DEFAULT '1' COMMENT '0表示自己 1表示所有',
   `profile` varchar(200) DEFAULT '还木有简介~',
-  `coverpath` varchar(20) DEFAULT NULL COMMENT '会有一个默认的',
+  `imgpath` varchar(20) DEFAULT NULL COMMENT '会有一个默认的',
   PRIMARY KEY (`id`),
   KEY `authorid` (`authorid`),
   CONSTRAINT `songlist_ibfk_1` FOREIGN KEY (`authorid`) REFERENCES `musician` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
