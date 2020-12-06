@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50506
 File Encoding         : 65001
 
-Date: 2020-12-06 17:23:47
+Date: 2020-12-06 17:47:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -178,6 +178,25 @@ CREATE TABLE `dlistdetail` (
 
 -- ----------------------------
 -- Records of dlistdetail
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `following`
+-- ----------------------------
+DROP TABLE IF EXISTS `following`;
+CREATE TABLE `following` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `star` int(11) NOT NULL,
+  `follower` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `star` (`star`),
+  KEY `follower` (`follower`),
+  CONSTRAINT `following_ibfk_1` FOREIGN KEY (`star`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `following_ibfk_2` FOREIGN KEY (`follower`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of following
 -- ----------------------------
 
 -- ----------------------------
