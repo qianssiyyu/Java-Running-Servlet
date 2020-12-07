@@ -25,6 +25,7 @@ public class _MappingKit {
 		arp.addMapping("demolist", "id", Demolist.class);
 		arp.addMapping("dlistdetail", "id", Dlistdetail.class);
 		arp.addMapping("following", "id", Following.class);
+		arp.addMapping("manager", "id", Manager.class);
 		arp.addMapping("musician", "id", Musician.class);
 		arp.addMapping("slistcollect", "id", Slistcollect.class);
 		arp.addMapping("slistdetail", "id", Slistdetail.class);

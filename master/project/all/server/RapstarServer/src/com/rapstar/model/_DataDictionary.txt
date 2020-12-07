@@ -97,6 +97,16 @@ Table: following
  follower | INT(10) | NO   |     |         |         
 ----------+---------+------+-----+---------+---------
 
+Table: manager
+-------+-------------+------+-----+---------+---------
+ Field | Type        | Null | Key | Default | Remarks 
+-------+-------------+------+-----+---------+---------
+ id    | INT(10)     | NO   | PRI |         |         
+ num   | VARCHAR(10) | NO   |     |         |         
+ name  | VARCHAR(20) | NO   |     |         |         
+ pwd   | VARCHAR(20) | NO   |     |         |         
+-------+-------------+------+-----+---------+---------
+
 Table: musician
 -----------+--------------+------+-----+---------+---------
  Field     | Type         | Null | Key | Default | Remarks 
