@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50506
 File Encoding         : 65001
 
-Date: 2020-12-06 18:32:59
+Date: 2020-12-07 10:09:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,11 +28,16 @@ CREATE TABLE `acccollect` (
   KEY `accid` (`accid`),
   CONSTRAINT `acccollect_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `acccollect_ibfk_2` FOREIGN KEY (`accid`) REFERENCES `accompaniment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of acccollect
 -- ----------------------------
+INSERT INTO `acccollect` VALUES ('1', '2', '3');
+INSERT INTO `acccollect` VALUES ('2', '2', '9');
+INSERT INTO `acccollect` VALUES ('3', '1', '3');
+INSERT INTO `acccollect` VALUES ('4', '5', '4');
+INSERT INTO `acccollect` VALUES ('5', '3', '3');
 
 -- ----------------------------
 -- Table structure for `acclist`
@@ -73,11 +78,15 @@ CREATE TABLE `accompaniment` (
   KEY `style` (`style`),
   CONSTRAINT `accompaniment_ibfk_1` FOREIGN KEY (`authorid`) REFERENCES `musician` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `accompaniment_ibfk_2` FOREIGN KEY (`style`) REFERENCES `style` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of accompaniment
 -- ----------------------------
+INSERT INTO `accompaniment` VALUES ('2', 'acc1', '2', '还木有介绍~', '2020-12-07 09:16:24', null, '1', '0', '2.mp3');
+INSERT INTO `accompaniment` VALUES ('3', 'acc2', '1', '还木有介绍~', '2020-12-06 09:17:06', null, '2', '0', '3.mp3');
+INSERT INTO `accompaniment` VALUES ('4', 'acc3', '3', '还木有介绍~', '2020-12-07 09:18:38', null, '3', '0', '4.mp3');
+INSERT INTO `accompaniment` VALUES ('9', 'acc4', '4', '还木有介绍~', '2020-12-07 09:18:14', null, '7', '0', '9.mp3');
 
 -- ----------------------------
 -- Table structure for `alistdetail`
@@ -194,11 +203,38 @@ CREATE TABLE `following` (
   KEY `follower` (`follower`),
   CONSTRAINT `following_ibfk_1` FOREIGN KEY (`star`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `following_ibfk_2` FOREIGN KEY (`follower`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of following
 -- ----------------------------
+INSERT INTO `following` VALUES ('1', '2', '3');
+INSERT INTO `following` VALUES ('2', '2', '4');
+INSERT INTO `following` VALUES ('4', '6', '1');
+INSERT INTO `following` VALUES ('5', '2', '6');
+INSERT INTO `following` VALUES ('6', '8', '2');
+
+-- ----------------------------
+-- Table structure for `manager`
+-- ----------------------------
+DROP TABLE IF EXISTS `manager`;
+CREATE TABLE `manager` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `num` varchar(10) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `pwd` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of manager
+-- ----------------------------
+INSERT INTO `manager` VALUES ('1', 'qian', '钱', 'qian');
+INSERT INTO `manager` VALUES ('2', 'zhang', '张', 'zhang');
+INSERT INTO `manager` VALUES ('3', 'zheng', '郑', 'zheng');
+INSERT INTO `manager` VALUES ('4', 'guan', '关', 'guan');
+INSERT INTO `manager` VALUES ('5', 'liu', '刘', 'liu');
+INSERT INTO `manager` VALUES ('6', 'li', '李', 'li');
 
 -- ----------------------------
 -- Table structure for `musician`
@@ -215,11 +251,15 @@ CREATE TABLE `musician` (
   PRIMARY KEY (`id`),
   KEY `userid` (`userid`),
   CONSTRAINT `musician_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of musician
 -- ----------------------------
+INSERT INTO `musician` VALUES ('1', '缠山藏风', '还木有短介绍~', '还木有长介绍~', '男', null, null);
+INSERT INTO `musician` VALUES ('2', '解在关锁', '还木有短介绍~', '还木有长介绍~', '女', '8', null);
+INSERT INTO `musician` VALUES ('3', '第三个歌手', '还木有短介绍~', '还木有长介绍~', '男', null, null);
+INSERT INTO `musician` VALUES ('4', '第四个歌手', '还木有短介绍~', '还木有长介绍~', '女', '4', null);
 
 -- ----------------------------
 -- Table structure for `slistcollect`
@@ -331,11 +371,19 @@ CREATE TABLE `style` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of style
 -- ----------------------------
+INSERT INTO `style` VALUES ('1', '流行说唱');
+INSERT INTO `style` VALUES ('2', '另类说唱');
+INSERT INTO `style` VALUES ('3', '地下说唱');
+INSERT INTO `style` VALUES ('4', '重低音贝斯说唱');
+INSERT INTO `style` VALUES ('5', '西海岸说唱乐');
+INSERT INTO `style` VALUES ('6', '硬核说唱');
+INSERT INTO `style` VALUES ('7', '老派说唱乐');
+INSERT INTO `style` VALUES ('8', '中西部说唱乐');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -354,8 +402,16 @@ CREATE TABLE `user` (
   `isvip` char(2) NOT NULL DEFAULT '0' COMMENT '只有0和1两个值',
   `certification` char(2) NOT NULL DEFAULT '0' COMMENT '0是普通用户，1是音乐人认证(发了歌/伴奏的都是音乐人，demo的不算)',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+INSERT INTO `user` VALUES ('1', '12345678901', '还没有填昵称~', '000111', '1.jpg', '男', '还木有简介哦~', '1', '0', '0', '0');
+INSERT INTO `user` VALUES ('2', '12345678902', '还没有填昵称~', '000222', '2.jpg', '女', '还木有简介哦~', '1', '3', '0', '0');
+INSERT INTO `user` VALUES ('3', '12345678903', '还没有填昵称~', '000333', '3.jpg', '男', '还木有简介哦~', '1', '0', '0', '0');
+INSERT INTO `user` VALUES ('4', '12345678904', '还没有填昵称~', '000444', '4.jpg', '男', '还木有简介哦~', '1', '0', '0', '0');
+INSERT INTO `user` VALUES ('5', '12345678905', '还没有填昵称~', '000555', '5.jpg', '女', '还木有简介哦~', '0', '0', '0', '0');
+INSERT INTO `user` VALUES ('6', '12345678906', '还没有填昵称~', '000666', '0.jpg', '男', '还木有简介哦~', '1', '1', '0', '0');
+INSERT INTO `user` VALUES ('7', '12345678907', '还没有填昵称~', '000777', '0.jpg', '男', '还木有简介哦~', '0', '0', '0', '0');
+INSERT INTO `user` VALUES ('8', '12345678908', '还没有填昵称~', '000888', '0.jpg', '女', '还木有简介哦~', '0', '1', '0', '0');
