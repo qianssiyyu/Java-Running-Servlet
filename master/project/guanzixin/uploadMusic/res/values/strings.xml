@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">上传伴奏页demo</string>
+    <string-array name="type">
+        <item>请选择</item>
+        <item>分类1</item>
+        <item>分类2</item>
+    </string-array>
+    <string-array name="upload">
+        <item>请选择</item>
+        <item>上传1</item>
+        <item>上传2</item>
+    </string-array>
+    <string-array name="authority">
+        <item>公开上传</item>
+        <item>私密上传</item>
+    </string-array>
+    <string-array name="money">
+        <item>0</item>
+        <item>大于0</item>
+    </string-array>
+    <string-array name="toFriend">
+        <item>开启</item>
+        <item>关闭</item>
+    </string-array>
+</resources>
