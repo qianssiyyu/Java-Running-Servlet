@@ -3,7 +3,6 @@ package com.rapstar.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rapstar.controller.AccompanimentController;
 import com.rapstar.model.Accompaniment;
 import com.rapstar.model.Song;
 import com.rapstar.model.Style;
@@ -25,18 +24,18 @@ public class StyleService {
 	}
 
 	/**
-	 * TODO:获取指定类型的伴奏
+	 * 获取指定类型的伴奏
 	 */
-//	public static List<Accompaniment> getAccsByStyle(Style style) {
-//		List<Accompaniment> accs0 = new ArrayList<Accompaniment>();
-//		List<Accompaniment> accs = AccompanimentServ.getAllSongs();
-//		for (Accompaniment acc : songs) {
-//			if (song.getStyle().equals(style.getId())) {
-//				accs0.add(song);
-//			}
-//		}
-//		return accs0;
-//	}
+	public static List<Accompaniment> getAccsByStyle(Style style) {
+		List<Accompaniment> accs0 = new ArrayList<Accompaniment>();
+		List<Accompaniment> accs = AccService.getAllAccs();
+		for (Accompaniment acc : accs) {
+			if (acc.getStyle().equals(style.getId())) {
+				accs0.add(acc);
+			}
+		}
+		return accs0;
+	}
 
 	
 	/**
@@ -69,5 +68,9 @@ public class StyleService {
 	/**
 	 * 修改类型
 	 */
-	
+	public static boolean resetStyle(String oldName,String newName) {
+		//获取到id，之后update
+		List<Style> styles = Style.dao.find("select * from style");
+		return false;
+	}
 }
