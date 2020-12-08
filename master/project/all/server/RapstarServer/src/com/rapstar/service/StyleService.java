@@ -68,9 +68,15 @@ public class StyleService {
 	/**
 	 * 修改类型
 	 */
-	public static boolean resetStyle(String oldName,String newName) {
+	public static boolean resetStyle(String newName,String oldName) {
 		//获取到id，之后update
 		List<Style> styles = Style.dao.find("select * from style");
+		for (Style style : styles) {
+			if (style.getName().equals(oldName)) {
+				style.setName(newName);
+				return style.update();
+			}
+		}
 		return false;
 	}
 }
