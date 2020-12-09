@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50701
 File Encoding         : 65001
 
-Date: 2020-12-09 08:12:51
+Date: 2020-12-09 10:25:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,7 +28,7 @@ CREATE TABLE `acccollect` (
   KEY `accid` (`accid`),
   CONSTRAINT `acccollect_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `acccollect_ibfk_2` FOREIGN KEY (`accid`) REFERENCES `accompaniment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of acccollect
@@ -38,6 +38,11 @@ INSERT INTO `acccollect` VALUES ('2', '1', '2');
 INSERT INTO `acccollect` VALUES ('3', '1', '3');
 INSERT INTO `acccollect` VALUES ('4', '1', '4');
 INSERT INTO `acccollect` VALUES ('5', '1', '5');
+INSERT INTO `acccollect` VALUES ('6', '2', '6');
+INSERT INTO `acccollect` VALUES ('7', '2', '7');
+INSERT INTO `acccollect` VALUES ('8', '3', '3');
+INSERT INTO `acccollect` VALUES ('9', '3', '5');
+INSERT INTO `acccollect` VALUES ('19', '3', '7');
 
 -- ----------------------------
 -- Table structure for `acclist`
@@ -87,11 +92,13 @@ CREATE TABLE `accompaniment` (
 -- ----------------------------
 -- Records of accompaniment
 -- ----------------------------
-INSERT INTO `accompaniment` VALUES ('1', 'acc1', '1', 'acc1伴奏简介', '2020-12-07 09:16:24', '1.jpg', '1', '0', '1.mp3');
-INSERT INTO `accompaniment` VALUES ('2', 'acc2', '1', 'acc2伴奏简介', '2020-12-06 09:17:06', '2.jpg', '2', '0', '2.mp3');
-INSERT INTO `accompaniment` VALUES ('3', 'acc3', '1', 'acc3伴奏简介', '2020-12-07 09:18:38', '3.jpg', '3', '0', '3.mp3');
-INSERT INTO `accompaniment` VALUES ('4', 'acc4', '1', 'acc4伴奏简介', '2020-12-07 09:18:14', '4.jpg', '7', '0', '4.mp3');
-INSERT INTO `accompaniment` VALUES ('5', 'acc5', '1', 'acc5伴奏简介', '2020-12-08 17:20:38', '5.jpg', '1', '0', '5.mp3');
+INSERT INTO `accompaniment` VALUES ('1', 'ABC', '1', '叱咤纽约舌战界的美籍华裔嘻哈歌手MC Jin (欧阳靖)，继首张Single《Learn Chinese》大卖后，首次在美国发行广东Hip-Hop专辑《ABC》，在Hip-Hop的跨文化国度中，透过广', '2020-12-07 09:16:24', '1.jpg', '1', '0', '1.mp3');
+INSERT INTO `accompaniment` VALUES ('2', 'Ice Cream', '1', '歌曲《Ice Cream Cake》由作曲家团队Copyright Control、作曲家Yun Kyoung、制作团队S.M.Entertainment联合制作，歌曲的风格灵感来自于封面设计与插画师', '2020-12-06 09:17:06', '2.jpg', '2', '0', '2.mp3');
+INSERT INTO `accompaniment` VALUES ('3', 'My Name Is', '1', '十分优秀的说唱歌手，演员，目前已售出3亿张唱片', '2020-12-07 09:18:38', '3.jpg', '3', '0', '3.mp3');
+INSERT INTO `accompaniment` VALUES ('4', '不得不爱', '1', '《不得不爱》发行时间为1996年8月1日，歌曲原唱是彭佳慧，王中言填词，薛忠铭谱曲。', '2020-12-07 09:18:14', '4.jpg', '7', '0', '4.mp3');
+INSERT INTO `accompaniment` VALUES ('5', '闹啥子嘛闹', '1', '谱    曲张杰，谢帝，Peter Habib，Adam Nierow编    曲Peter Habib，Adam Nierow', '2020-12-08 17:20:38', '5.jpg', '1', '0', '5.mp3');
+INSERT INTO `accompaniment` VALUES ('6', '双截棍', '2', '《双截棍》是周杰伦演唱的一首歌曲，由周杰伦作曲，方文山作词，钟兴民编曲，收录于周杰伦2001年9月20日发行的专辑《范特西》中 [1]  。\r\n2002年第13届台湾金曲奖中，钟兴民凭借《双截棍》成为', '2020-12-10 10:01:47', '6.jpg', '1', '0', '6.mp3');
+INSERT INTO `accompaniment` VALUES ('7', '止战之殇', '2', '《止战之殇》是周杰伦演唱的一首歌曲，由方文山作诗 [1]  ，周杰伦谱曲、编曲，收录于周杰伦2004年8月3日发行的专辑《七里香》中 [2]  。\r\n2005年，该歌曲获得第16届台湾金曲奖最佳音乐录', '2020-12-10 08:02:35', '7.jpg', '1', '0', '7.mp3');
 
 -- ----------------------------
 -- Table structure for `alistdetail`
@@ -117,29 +124,14 @@ INSERT INTO `alistdetail` VALUES ('3', '1', '3');
 INSERT INTO `alistdetail` VALUES ('4', '1', '4');
 INSERT INTO `alistdetail` VALUES ('5', '1', '5');
 INSERT INTO `alistdetail` VALUES ('6', '2', '1');
-INSERT INTO `alistdetail` VALUES ('7', '2', '2');
-INSERT INTO `alistdetail` VALUES ('8', '2', '5');
+INSERT INTO `alistdetail` VALUES ('7', '2', '3');
+INSERT INTO `alistdetail` VALUES ('8', '2', '7');
 INSERT INTO `alistdetail` VALUES ('9', '3', '1');
-INSERT INTO `alistdetail` VALUES ('10', '3', '4');
-INSERT INTO `alistdetail` VALUES ('11', '3', '5');
+INSERT INTO `alistdetail` VALUES ('10', '3', '2');
+INSERT INTO `alistdetail` VALUES ('11', '3', '6');
 INSERT INTO `alistdetail` VALUES ('12', '4', '2');
-INSERT INTO `alistdetail` VALUES ('13', '4', '5');
-INSERT INTO `alistdetail` VALUES ('14', '4', '3');
-
--- ----------------------------
--- Table structure for `banzou`
--- ----------------------------
-DROP TABLE IF EXISTS `banzou`;
-CREATE TABLE `banzou` (
-  `collector` varchar(40) DEFAULT NULL,
-  `banzou` varchar(40) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of banzou
--- ----------------------------
-INSERT INTO `banzou` VALUES ('user1', '哥斯拉伴奏');
-INSERT INTO `banzou` VALUES ('user1', '个耶夫斯基');
+INSERT INTO `alistdetail` VALUES ('13', '4', '6');
+INSERT INTO `alistdetail` VALUES ('14', '4', '7');
 
 -- ----------------------------
 -- Table structure for `collection`
@@ -446,7 +438,7 @@ CREATE TABLE `song` (
 -- Records of song
 -- ----------------------------
 INSERT INTO `song` VALUES ('1', '不得不爱', '1', 'lrc1.lrc', null, '2', '1.mp3', '0', '1.png');
-INSERT INTO `song` VALUES ('2', 'The Slim Shady LP', '2', 'lrc2.lrc', null, '6', '2.mp3', '0', '2.png');
+INSERT INTO `song` VALUES ('2', 'My Name Is(Explicit)', '2', 'lrc2.lrc', null, '6', '2.mp3', '0', '2.png');
 INSERT INTO `song` VALUES ('3', 'ABC', '3', 'lrc3.lrc', null, '1', '3.mp3', '0', '3.png');
 INSERT INTO `song` VALUES ('4', 'Ice Cream', '4', 'lrc4.lrc', null, '1', '4.mp3', '0', '4.png');
 INSERT INTO `song` VALUES ('5', '上学威龙', '5', 'lrc5.lrc', null, '6', '5.mp3', '0', '5.png');
