@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?><!--字体：同一设置？？-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_all"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3e254f"
+    android:orientation="vertical"
+    tools:context=".MusicDetail">
+
+    <RelativeLayout
+        android:id="@+id/rl_util"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignTop="@id/rl_details"
+        android:layout_marginRight="20dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:paddingLeft="15dp"
+            android:src="@mipmap/back" />
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/more" />
+    </RelativeLayout>
+
+
+    <!--  设置圆角矩形，已在xml中设置  -->
+    <RelativeLayout
+        android:id="@+id/rl_details"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="11"
+        android:alpha="0.8"
+        android:background="@drawable/detail_frame"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_big_details"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_pic_ss"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/ll_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:gravity="center">
+                    <!--            glide框架设置为圆形-->
+                    <ImageView
+                        android:id="@+id/iv_photo"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_song"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="song"
+                        android:textSize="40sp" />
+
+                    <TextView
+                        android:id="@+id/tv_singer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="singer"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <com.example.demoallexercise1130.utils.WordView
+                android:singleLine="false"
+                android:id="@+id/lrc_ShowView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:visibility="gone"
+                android:textSize="30sp"
+                android:layout_centerHorizontal="true" />
+
+        </LinearLayout>
+
+
+        <!--TODO：进度条-->
+        <RelativeLayout
+            android:id="@+id/rl_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ll_play"
+            android:layout_margin="10dp">
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:thumb="@mipmap/ear128"
+                />
+
+            <TextView
+                android:id="@+id/tv_start"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/seekBar"
+                android:layout_marginLeft="10dp" />
+
+            <TextView
+                android:id="@+id/tv_end"
+                android:layout_marginRight="10dp"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/seekBar"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_play"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/ll_bottom_util"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_last"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/last_dark" />
+
+            <ImageView
+                android:id="@+id/iv_pauseOrStart"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/pause_dark" />
+
+            <ImageView
+                android:id="@+id/iv_next"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/next_dark" />
+        </LinearLayout>
+
+        <!--        下面的小工具，也可使用帧布局-->
+        <LinearLayout
+            android:id="@+id/ll_bottom_util"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+            <!--            随机播放图标-->
+            <ImageView
+                android:id="@+id/iv_play_order"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:src="@mipmap/byorder_play" />
+            <!--            这是为了美观-->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/iv_tolike"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:src="@mipmap/tolike" />
+            <!--            为了美观-->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/iv_songlist"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:src="@mipmap/songlist" />
+
+            <!--            添加到喜欢-->
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--用include实现嵌入-->
+<!--暂时保留为尖角 用glide处理为圆角-->
+<RelativeLayout
+    android:id="@+id/rl_bottom_player"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    android:clickable="false"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#583f64"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--  在activity中处理图片  用glide处理下 高宽，圆角等
+    注意贴合程度-->
+    <ImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/naineone"
+        />
+    <LinearLayout
+        android:id="@+id/ll_detail"
+        android:layout_toRightOf="@id/iv_photo"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--   TODO:字体设置     -->
+        <TextView
+            android:fontFamily="monospace"
+            android:id="@+id/tv_song"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="song"
+            android:textSize="27sp"
+            android:textColor="@android:color/white"
+            />
+        <TextView
+            android:id="@+id/tv_singer"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="singer"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+    <LinearLayout
+        android:alpha="0.9"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="150dp"
+        android:orientation="horizontal"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true">
+        <ImageView
+            android:clickable="true"
+            android:id="@+id/iv_last"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@mipmap/last"
+            />
+
+        <ImageView
+            android:clickable="true"
+            android:id="@+id/iv_pauseOrStart"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@mipmap/play" />
+
+        <ImageView
+            android:clickable="true"
+            android:id="@+id/iv_next"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@mipmap/next"
+            />
+    </LinearLayout>
+</RelativeLayout>

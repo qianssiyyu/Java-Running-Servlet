@@ -1,0 +1,3 @@
+include ':mywelcome'
+include ':app'
+rootProject.name = "DemoAllExercise1130"

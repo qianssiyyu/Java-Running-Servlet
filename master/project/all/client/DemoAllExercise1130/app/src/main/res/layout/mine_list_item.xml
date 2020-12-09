@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/iv_user"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="100dp"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="5"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="100dp"
+        android:textSize="30sp"
+        android:id="@+id/tv_gedanming"/>
+    <Button
+        android:id="@+id/btn_more"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="50dp"
+        android:background="@drawable/more"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>

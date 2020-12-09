@@ -1,0 +1,27 @@
+<resources>
+    <string name="loading">RapStar</string>
+    <string name="app_name">RapStar</string>
+    <string name="login_success">login success</string>
+    <string name="login">登录</string>
+    <string name="Username" translatable="false">用户名</string>
+    <string name="Password" translatable="false">密 码</string>
+    <string name="forgot_your_password" translatable="false">忘记您的密码？</string>
+    <string name="go">登录</string>
+    <string name="repeat_password">再次输入密码</string>
+    <string name="next">下一步</string>
+    <string name="register">注册</string>
+    <string-array name="upload">
+        <item>我的分类1</item>
+        <item>我的分类2</item>
+        <item>我的分类3</item>
+    </string-array>
+    <string-array name="authority">
+        <item>公开上传</item>
+        <item>私密上传</item>
+    </string-array>
+    <string-array name="posts">
+        <item>开启</item>
+        <item>关闭</item>
+    </string-array>
+
+</resources>
