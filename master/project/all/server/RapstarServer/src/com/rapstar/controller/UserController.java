@@ -19,14 +19,19 @@ public class UserController extends Controller {
 		// 获取前端传来的json串
 		// 获取数据，通过流的方式
 		String s = HttpKit.readData(getRequest());
+		System.out.println("从客户端拿到的数据是："+s);
+		
 		User user = JsonKit.parse(s, User.class);
+		System.out.println("解析出的user数据："+user.getPhone()+" pwd:"+user.getPwd());
 		boolean flag = UserService.isExitUser(user);
+		
 		if (flag) {
 			// 存入详细信息
 			getSession().setAttribute("user", UserService.getUserMsg(user));
 
 		}
 		String returnStr = String.valueOf(flag);
+		System.out.println(returnStr);
 		renderText(returnStr);
 
 	}

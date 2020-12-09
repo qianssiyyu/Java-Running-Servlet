@@ -35,7 +35,6 @@ public class UserService {
 				return user2;
 			}
 		}
-
 		return null;
 	}
 
@@ -45,7 +44,10 @@ public class UserService {
 	 * @return
 	 */
 	public static List<User> getAllUser() {
-		return User.dao.find("select * from user");
+		System.out.println("开始获取用户");
+		List<User> users = User.dao.find("select * from user");
+		System.out.println(users.size());
+		return users;
 	}
 
 	/**

@@ -8,7 +8,7 @@ public class AccService {
 	
 	/**
 	 * ÊÇ·ñ´æÔÚ´Ë°é×à
-	 * @param acc
+	 * @param accs
 	 * @return boolean
 	 */
 	public static boolean isExistAcc(Accompaniment acc) {
