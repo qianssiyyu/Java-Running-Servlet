@@ -18,6 +18,7 @@ import com.rapstar.controller.AccompanimentController;
 import com.rapstar.controller.IndexController;
 import com.rapstar.controller.UserController;
 import com.rapstar.model.Accompaniment;
+import com.rapstar.model._MappingKit;
 
 public class AppConfig extends JFinalConfig {
 
@@ -58,7 +59,7 @@ public class AppConfig extends JFinalConfig {
 		arp.setShowSql(true);
 		me.add(arp);
 		arp.setDialect(new MysqlDialect());
-//		_MappingKit.mapping(arp);
+		_MappingKit.mapping(arp);
 
 	}
 

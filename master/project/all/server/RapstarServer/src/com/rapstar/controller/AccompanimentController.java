@@ -3,7 +3,6 @@ package com.rapstar.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.Gson;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.HttpKit;
 import com.jfinal.kit.JsonKit;
@@ -13,7 +12,7 @@ import com.rapstar.service.AccService;
 import com.rapstar.service.UserService;
 
 public class AccompanimentController extends Controller {
-	private Gson gson = new Gson();
+//	private Gson gson = new Gson();
 
 	/**
 	 * Ìí¼Ó°é×à
@@ -46,8 +45,8 @@ public class AccompanimentController extends Controller {
 					accs.add(accompaniment);
 				}
 			}
-			String json = gson.toJson(accs);
-			renderText(json);
+//			String json = gson.toJson(accs);
+//			renderText(json);
 		}
 	}
 
@@ -69,8 +68,8 @@ public class AccompanimentController extends Controller {
 					accs.add(accompaniment);
 				}
 			}
-			String json = gson.toJson(accs);
-			renderText(json);
+//			String json = gson.toJson(accs);
+//			renderText(json);
 		}
 		renderText(null);
 	}

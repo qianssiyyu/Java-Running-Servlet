@@ -2,7 +2,7 @@ package com.rapstar.controller;
 
 import java.util.List;
 
-import com.google.gson.Gson;
+
 import com.jfinal.core.Controller;
 import com.jfinal.kit.HttpKit;
 import com.jfinal.kit.JsonKit;
@@ -12,7 +12,7 @@ import com.rapstar.model.Style;
 import com.rapstar.service.StyleService;
 
 public class StyleController extends Controller {
-	Gson gson = new Gson();
+//	Gson gson = new Gson();
 	
 	/**
 	 * 修改类型
@@ -36,8 +36,8 @@ public class StyleController extends Controller {
 			renderText("null");
 		}
 		//如果返回的不是null，表示有此类歌曲
-		String json = gson.toJson(songs);
-		renderText(json);
+//		String json = gson.toJson(songs);
+//		renderText(json);
 	}
 	
 	/**
@@ -51,8 +51,8 @@ public class StyleController extends Controller {
 			renderText("null");
 		}
 		//如果返回的不是null，表示有此类歌曲
-		String json = gson.toJson(accs);
-		renderText(json);
+//		String json = gson.toJson(accs);
+//		renderText(json);
 	}
 	
 	/**
@@ -63,8 +63,8 @@ public class StyleController extends Controller {
 		if (styles==null||styles.size()==0) {
 			renderText(null);
 		} else {
-			String jsonString = gson.toJson(styles);
-			renderText(jsonString);
+//			String jsonString = gson.toJson(styles);
+//			renderText(jsonString);
 		}
 	}
 }

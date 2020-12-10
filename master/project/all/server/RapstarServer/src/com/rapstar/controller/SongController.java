@@ -2,7 +2,6 @@ package com.rapstar.controller;
 
 import java.util.List;
 
-import com.google.gson.Gson;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.HttpKit;
 import com.jfinal.kit.JsonKit;
@@ -44,9 +43,9 @@ public class SongController extends Controller {
 		User user = (User) getSession().getAttribute("user");
 		List<Song> songs = SongService.getMySongs(user);
 		// ×ª»¯Îªjson
-		Gson gson = new Gson();
-		String jsonString = gson.toJson(songs);
-		render(jsonString);
+//		Gson gson = new Gson();
+//		String jsonString = gson.toJson(songs);
+//		render(jsonString);
 	}
 
 	/**

@@ -2,7 +2,6 @@ package com.rapstar.controller;
 
 import java.util.List;
 
-import com.google.gson.Gson;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.HttpKit;
 import com.jfinal.kit.JsonKit;
@@ -10,7 +9,7 @@ import com.rapstar.model.User;
 import com.rapstar.service.UserService;
 
 public class UserController extends Controller {
-	private Gson gson = new Gson();
+
 
 	/**
 	 * 登录
@@ -18,6 +17,7 @@ public class UserController extends Controller {
 	public void login() {
 		// 获取前端传来的json串
 		// 获取数据，通过流的方式
+		System.out.println("开始拿数据");
 		String s = HttpKit.readData(getRequest());
 		System.out.println("从客户端拿到的数据是："+s);
 		
@@ -62,8 +62,7 @@ public class UserController extends Controller {
 		User user = (User) getSession().getAttribute("user");
 		// TODO:能不能序列化空对象？
 		if (user != null) {
-			String json = gson.toJson(user);
-			renderText(json);
+			renderJson(user);
 		} else {
 			renderText(null);
 		}
@@ -79,8 +78,7 @@ public class UserController extends Controller {
 		if (UserService.isExitUser(user)) {
 			// 存在此用户，查询信息并返回
 			User user2 = UserService.getUserMsg(user);
-			String json = gson.toJson(user2);
-			renderText(json);
+			renderJson(user2);
 		} else {
 			renderText(null);
 		}
