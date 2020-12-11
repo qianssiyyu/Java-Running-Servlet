@@ -8,13 +8,13 @@ import com.jfinal.kit.JsonKit;
 import com.rapstar.model.Song;
 import com.rapstar.model.User;
 import com.rapstar.service.SongService;
-import com.rapstar.service.UserService;
 
 public class SongController extends Controller {
 	/**
 	 * 上传歌曲
 	 */
 	public void upload() {
+		// TODO:歌曲的下载操作（读写）
 		String s = HttpKit.readData(getRequest());
 		// 拿到需要存储的
 		Song song = JsonKit.parse(s, Song.class);
@@ -42,10 +42,10 @@ public class SongController extends Controller {
 	public void getMySongs() {
 		User user = (User) getSession().getAttribute("user");
 		List<Song> songs = SongService.getMySongs(user);
-		// 转化为json
-//		Gson gson = new Gson();
-//		String jsonString = gson.toJson(songs);
-//		render(jsonString);
+		// 转换为json格式
+		String json = JsonKit.toJson(songs);
+		// 发送
+		renderText(json);
 	}
 
 	/**

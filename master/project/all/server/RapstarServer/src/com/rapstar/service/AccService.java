@@ -12,7 +12,7 @@ public class AccService {
 	 * @return boolean
 	 */
 	public static boolean isExistAcc(Accompaniment acc) {
-		//不允许由于重名
+		//不允许有重名
 		String accName = acc.getName();
 		List<Accompaniment> accs = getAllAccs();
 		for (Accompaniment accompaniment : accs) {
@@ -23,6 +23,19 @@ public class AccService {
 		return false;
 	}
 	
+	/**
+	 * 获取伴奏详细信息
+	 */
+	public static Accompaniment getAccMsg(Accompaniment acc) {
+		String accName = acc.getName();
+		List<Accompaniment> accs = getAllAccs();
+		for (Accompaniment accompaniment : accs) {
+			if (accompaniment.getName().equals(accName)) {
+				return accompaniment;
+			}
+		}
+		return null;
+	}
 	
 	/**
 	 * 得到所有伴奏信息

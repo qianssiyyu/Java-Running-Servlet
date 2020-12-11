@@ -12,12 +12,11 @@ import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
-import com.rapstar.controller.AcccollectController;
+import com.rapstar.controller.AccColController;
 import com.rapstar.controller.AcclistController;
 import com.rapstar.controller.AccompanimentController;
 import com.rapstar.controller.IndexController;
 import com.rapstar.controller.UserController;
-import com.rapstar.model.Accompaniment;
 import com.rapstar.model._MappingKit;
 
 public class AppConfig extends JFinalConfig {
@@ -37,9 +36,8 @@ public class AppConfig extends JFinalConfig {
 	@Override
 	public void configRoute(Routes me) {
 		me.add("/user", UserController.class);
-		me.add("/acccollect", AcccollectController.class);
+		me.add("/acccollect", AccColController.class);
 		me.add("/acc", AccompanimentController.class);
-		me.add("/acccontroller", AcccollectController.class);
 		me.add("/acclist", AcclistController.class);
 		me.add("/", IndexController.class);
 	}

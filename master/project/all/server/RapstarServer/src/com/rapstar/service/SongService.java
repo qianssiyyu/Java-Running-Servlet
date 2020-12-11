@@ -18,7 +18,7 @@ public class SongService {
 		List<Song> songs = getAllSongs();
 		for (Song song2 : songs) {
 			// 已经存在该伴奏
-			if (song.getName().equals(song.getName())) {
+			if (song.getName().equals(song2.getName())) {
 				//存在该歌曲
 				return true;
 			}
@@ -37,7 +37,7 @@ public class SongService {
 		List<Song> songs = getAllSongs();
 		for (Song song2 : songs) {
 			// 已经存在该歌曲
-			if (song.getName().equals(song.getName())) {
+			if (song.getName().equals(song2.getName())) {
 				return song;
 			}
 		}

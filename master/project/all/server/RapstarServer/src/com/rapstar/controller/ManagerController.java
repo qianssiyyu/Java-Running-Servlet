@@ -1,12 +1,8 @@
 package com.rapstar.controller;
 
 import com.jfinal.core.Controller;
-import com.jfinal.kit.HttpKit;
-import com.jfinal.kit.JsonKit;
 import com.rapstar.model.Manager;
-import com.rapstar.model.User;
 import com.rapstar.service.ManagerService;
-import com.rapstar.service.UserService;
 
 public class ManagerController extends Controller {
 
@@ -26,6 +22,7 @@ public class ManagerController extends Controller {
 		} else {
 			renderJsp(returnStr);
 		}
-
 	}
+	
+	
 }

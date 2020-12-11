@@ -12,7 +12,6 @@ import com.rapstar.model.Style;
 import com.rapstar.service.StyleService;
 
 public class StyleController extends Controller {
-//	Gson gson = new Gson();
 	
 	/**
 	 * 修改类型
@@ -20,7 +19,6 @@ public class StyleController extends Controller {
 	public void resetStyle() {
 		String oldName = getPara("old");
 		String newName = getPara("new");
-		
 		renderText(StyleService.resetStyle(newName, oldName)+"");
 	}
 	
@@ -36,8 +34,8 @@ public class StyleController extends Controller {
 			renderText("null");
 		}
 		//如果返回的不是null，表示有此类歌曲
-//		String json = gson.toJson(songs);
-//		renderText(json);
+		String json = JsonKit.toJson(songs);
+		renderText(json);
 	}
 	
 	/**
@@ -51,8 +49,8 @@ public class StyleController extends Controller {
 			renderText("null");
 		}
 		//如果返回的不是null，表示有此类歌曲
-//		String json = gson.toJson(accs);
-//		renderText(json);
+		String json = JsonKit.toJson(accs);
+		renderText(json);
 	}
 	
 	/**
@@ -63,8 +61,8 @@ public class StyleController extends Controller {
 		if (styles==null||styles.size()==0) {
 			renderText(null);
 		} else {
-//			String jsonString = gson.toJson(styles);
-//			renderText(jsonString);
+			String json = JsonKit.toJson(styles);
+			renderText(json);
 		}
 	}
 }
