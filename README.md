@@ -1,4 +1,4 @@
-<img src="../../image/logo.png"  height="50" />
+<img src="./image/logo.png"  height="50" />
 
 # 2018级项目实训成果展示 
 
@@ -69,7 +69,7 @@ rapstar是一款音乐创作社交软件，是一个专为说唱歌手及说唱�
 
 <p>
   <img src="./image/4-2-1_本地歌曲.jpg"  width=250 height=500 />
-  <img src="./image/4-2-2_半地伴奏.jpg"  width=250 height=500 />
+  <img src="./image/4-2-2_本地伴奏.jpg"  width=250 height=500 />
   <img src="./image/5-1-1_灵感页.jpg"  width=250 height=500 />
 </p>
 
