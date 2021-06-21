@@ -1,4 +1,4 @@
-<img src="../../RapStar/image/logo.png"  height="50" />
+<img src="../../image/logo.png"  height="50" />
 
 # 2018级项目实训成果展示 
 
